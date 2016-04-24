@@ -1,2 +1,2 @@
-# DataStructures
-DS and Algo solutions
+# Java Programming
+Java Programming Solutions
