@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicReference;
 /**
  * Created by Syril on 28-06-2016.
  */
-public class NSEProblem {
+public class AtomicReference {
     public static void main(String[] args) {
         /*ConcurrentHashMap<String, BigDecimal> sumByAccount = new ConcurrentHashMap<>();
         ConcurrentHashMap<String, BigDecimal> sumByAccount = new ConcurrentHashMap<>();
