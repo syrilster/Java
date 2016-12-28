@@ -1,10 +1,10 @@
 /**
- * Created by Syril on 09-04-2016.
+ * Created by ssadasivan on 28-12-2016.
  */
-public class FindMissingNumber {
+public class MissingNumber {
 
     public static void main(String[] args) {
-        int[] arr = {1, 3, 4, 6, 2};
+        int[] arr = {1, 2, 4, 5, 6};
 
         int missingNumber = findMissingNumber(arr);
 
@@ -12,9 +12,9 @@ public class FindMissingNumber {
     }
 
     private static int findMissingNumber(int[] arr) {
-        int total = calculateTotal(arr.length + 1);
+        int total = calculateTotal(arr.length);
         int sum = calculateSum(arr);
-        return total - sum;
+        return Math.abs(total - sum);
     }
 
     private static int calculateSum(int[] arr) {
@@ -30,4 +30,5 @@ public class FindMissingNumber {
     private static int calculateTotal(int n) {
         return n * (n + 1) / 2;
     }
+
 }
