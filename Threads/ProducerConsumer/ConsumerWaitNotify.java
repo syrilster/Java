@@ -5,7 +5,7 @@ import java.util.Queue;
 /**
  * Created by syrils on 3/23/16.
  */
-public class ConsumerForWaitNotify implements Runnable {
+class ConsumerForWaitNotify implements Runnable {
 
     private Queue sharedQueue;
 

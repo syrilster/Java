@@ -1,7 +1,7 @@
 /**
  * Created by ssadasivan on 28-12-2016.
  */
-public class MissingNumber {
+class MissingNumber {
 
     public static void main(String[] args) {
         int[] arr = {1, 2, 4, 5, 6};

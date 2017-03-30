@@ -12,7 +12,7 @@
  * Time Complexity: O(n)
  * Space Complexity: O(1)
  */
-public class RotateArray {
+class RotateArray {
     public static void main(String[] args) {
         int k = 2;
         int[] array = {1, 2, 3, 4, 5};

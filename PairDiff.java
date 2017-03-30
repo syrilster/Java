@@ -3,7 +3,7 @@ import java.util.*;
 /**
  * Created by Syril on 04-04-2016.
  */
-public class pairDiff {
+class pairDiff {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
