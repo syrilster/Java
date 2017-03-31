@@ -7,12 +7,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Refer https://github.com/SriramKeerthi/SimpleThreadpool/blob/master/threadpool/src/main/java/com/caffinc/threadpool/SimpleThreadpool.java
  */
-public class CustomThreadPool {
+public class CustomThreadPoolAdvanced {
     private AtomicBoolean execute;
     private LinkedList<Runnable> taskQueue;
     private PoolManager[] threads;
 
-    public CustomThreadPool(int threadNumber) {
+    public CustomThreadPoolAdvanced(int threadNumber) {
         taskQueue = new LinkedList<>();
         this.execute = new AtomicBoolean(true);
         threads = new PoolManager[threadNumber];

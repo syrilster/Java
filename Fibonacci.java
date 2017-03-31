@@ -5,7 +5,7 @@ import java.time.Instant;
  * @author ssadasivan
  * @since 2/15/2017.
  */
-public class FibonacciDP {
+class FibonacciDP {
 	private static int[] lookUp;
 	private static int max = 100;
 

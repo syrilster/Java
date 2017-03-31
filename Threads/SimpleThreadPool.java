@@ -25,4 +25,21 @@ public class SimpleThreadPool {
             customThreadPool.execute(worker);
         }
     }
+
+    private static class WorkerThread implements Runnable {
+        String i;
+
+        public WorkerThread(String s) {
+            this.i = s;
+        }
+
+        @Override
+        public void run() {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
