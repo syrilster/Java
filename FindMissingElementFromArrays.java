@@ -1,5 +1,6 @@
 /**
- * Created by ssadasivan on 2/8/2017.
+ * Find missing number in the duplicate array.
+ * XOR operation with itself is 0. So initialize the first element as result and perform XOR operation with other elements of array.
  */
 public class FindMissingElementFromArrays {
 	public static void main(String[] args) {
