@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Created by Syril on 04-04-2016.
  */
-class pairDiff {
+public class pairDiff {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

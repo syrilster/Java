@@ -1,6 +1,6 @@
 package Arrays;
 
-class MaximumSumPath {
+public class MaximumSumPath2Arrays {
     // Utility function to find maximum of two integers
     int max(int x, int y) {
         return (x > y) ? x : y;
@@ -64,7 +64,7 @@ class MaximumSumPath {
 
     // Driver program to test above functions
     public static void main(String[] args) {
-        MaximumSumPath sumpath = new MaximumSumPath();
+        MaximumSumPath2Arrays sumpath = new MaximumSumPath2Arrays();
         int ar1[] = {2, 3, 7, 10, 12};
         int ar2[] = {1, 5, 7, 8};
         int m = ar1.length;
