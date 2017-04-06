@@ -3,7 +3,7 @@ package Arrays;
 /**
  * Created by Syril on 25-05-2016.
  */
-public class ArrayRotation {
+public class FindPivotInRotatedArray {
     public static void main(String[] args) {
         int arr1[] = {3, 4, 5, 6, 1, 2};
         int n1 = arr1.length;

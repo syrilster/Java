@@ -14,7 +14,7 @@ package Arrays;
  * Time Complexity: O(n)
  * Space Complexity: O(1)
  */
-class RotateArray {
+public class RotateArrayNumOfTimes {
     public static void main(String[] args) {
         int k = 2;
         int[] array = {1, 2, 3, 4, 5};
