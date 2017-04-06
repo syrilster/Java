@@ -6,10 +6,10 @@ import java.util.Stack;
 public class NextMinimumElement {
     public static void main(String[] args) {
         int a[] = {10, 7, 9, 8, 3, 5};
-        getNGE(a);
+        getNextMinimumElement(a);
     }
 
-    public static void getNGE(int[] a) {
+    public static void getNextMinimumElement(int[] a) {
         Stack<Integer> s = new Stack<>();
         s.push(a[0]);
         for (int i = 1; i < a.length; i++) {
