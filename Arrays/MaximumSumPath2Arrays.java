@@ -1,3 +1,5 @@
+package Arrays;
+
 class MaximumSumPath {
     // Utility function to find maximum of two integers
     int max(int x, int y) {

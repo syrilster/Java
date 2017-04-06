@@ -1,3 +1,5 @@
+package Arrays;
+
 /**
  * Algorithm/Insights
  * <p>
@@ -9,7 +11,7 @@
  * Example : Sum of (1-3) = sum of elements (0-2) + array[3] - array[0]
  *           Sum of (2-4) = sum of elements (1-3) + array[4] - array[2]
  */
-public class MaxAvgSubArray {
+public class MaxAvgSubArrayOfLength {
     public static void printMaxAvgSubarray(int[] input, int k) {
         System.out.print("Maximum average subarray of length " + k + " is:  ");
         int index = getMaxAvgSubarrayStartIndex(input, k);

@@ -1,3 +1,5 @@
+package Arrays;
+
 /**
  * Time Complexity is O(n)
    Space Complexity is O(1)

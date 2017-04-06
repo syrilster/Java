@@ -1,3 +1,5 @@
+package Arrays;
+
 /**
  * Efficient Solution: Using Array Reversal
  * 1. Reverse the array elements from 0 to k-1.

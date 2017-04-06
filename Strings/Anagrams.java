@@ -1,3 +1,5 @@
+package Strings;
+
 import com.sun.prism.shader.Solid_TextureYV12_Loader;
 
 import java.util.Scanner;
@@ -37,8 +39,8 @@ public class Anagrams {
         String A = sc.next();
         String B = sc.next();
         boolean ret = isAnagram(A, B);
-        if (ret) System.out.println("Anagrams");
-        else System.out.println("Not Anagrams");
+        if (ret) System.out.println("Strings.Anagrams");
+        else System.out.println("Not Strings.Anagrams");
 
     }
 }

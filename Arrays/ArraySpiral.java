@@ -1,3 +1,5 @@
+package Arrays;
+
 /**
  * Created by syrils on 5/31/16.
  */
