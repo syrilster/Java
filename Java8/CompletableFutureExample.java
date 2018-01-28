@@ -16,7 +16,7 @@ public class CompletableFutureExample {
         CompletableFuture<String> callTwo = CompletableFuture.supplyAsync(CompletableFutureExample::connectApiTwo);
         CompletableFuture<String> callThree = CompletableFuture.supplyAsync(CompletableFutureExample::connectApiThree);
         CompletableFuture<String> result = CompletableFuture.allOf(callOne, callTwo, callThree).
-                thenApplyAsync(aVoid -> convert(callOne.join(), callTwo.join(), callThree.join()));
+                thenApplyAsync(test -> convert(callOne.join(), callTwo.join(), callThree.join()));
         /*try {
             Thread.sleep(100);
         } catch (InterruptedException e) {
