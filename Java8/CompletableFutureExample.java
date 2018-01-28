@@ -4,7 +4,10 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 /**
- * Created by Syril on 28-01-2018.
+ * https://www.callicoder.com/java-8-completablefuture-tutorial/
+ * https://stackoverflow.com/questions/33649902/execute-multiple-queries-in-parallel-via-streams
+ * https://stackoverflow.com/questions/42504277/java-8-call-methods-async-in-parallel-and-combine-their-results
+ * http://fahdshariff.blogspot.in/2016/06/java-8-completablefuture-vs-parallel.html
  */
 public class CompletableFutureExample {
     public static void main(String[] args) {
