@@ -1,20 +1,18 @@
 
 public class CallableExample extends SingleTask {
-
-    private int upperAge;
     private boolean killed;
     public static final String dataSourceName = "jdbc/resource name";
 
     @Override
     public void executeTask() {
-		killed = false;
-		boolean successful = run(getContext());
-		if (!successful || isKilled()) {
-			getContext().postEvent("Task did not finish successfully");
-		} else{
-			logger.debug("finished processing job!");
-			getContext().postEvent("Finished processing job");
-		}       
+	killed = false;
+	boolean successful = run(getContext());
+	if (!successful || isKilled()) {
+		getContext().postEvent("Task did not finish successfully");
+	} else{
+		logger.debug("finished processing job!");
+		getContext().postEvent("Finished processing job");
+	}       
     }
 
     private boolean run(TaskContext context) {
