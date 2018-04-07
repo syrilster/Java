@@ -8,10 +8,12 @@ Thread th = new Thread(new Runnable() {
    System.out.println("In another thread");
   }  
 });
-th.start
+th.start();
 ```
 Lambda code:
 
 ```
 Thread th = new Thread(() ->  System.out.println("In another thread"));
+th.start();
+
 ```
