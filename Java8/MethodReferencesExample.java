@@ -46,6 +46,12 @@ public class MethodReferencesExample {
 		System.out.println(numbers.stream()
 					  .map(String::valueOf)
 					  .reduce("", String::concat));
+		
+		/*Limitation of method references:
+		  1. Cannot be used if there is any manipulation of data.
+		  2. If there is a conflict between insatnce method and static method. i.e if the compiler finds two methods 
+		     which are potential candidates then it will throw an error.		
+		*/
 
 	}
 }
