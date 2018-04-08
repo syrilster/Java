@@ -37,14 +37,15 @@ public class MethodReferencesExample {
 		//Using Method Reference to replace the common parts.
 		System.out.println(numbers.stream().reduce(0, Integer::sum));
 
+		// Unlike the previous example the first parameter is target and second parameter is a argument
 		System.out.println(numbers.stream()
 				.map(e-> String.valueOf(e))
 				.reduce("", (carry, str) -> carry.concat(str)));
 
-		//Using Method Reference
+		//Using Method Reference to replace the noise i.e carry and str
 		System.out.println(numbers.stream()
-							.map(String::valueOf)
-							.reduce("", String::concat));
+					  .map(String::valueOf)
+					  .reduce("", String::concat));
 
 	}
 }
