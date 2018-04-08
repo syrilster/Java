@@ -13,7 +13,8 @@ public class MethodReferencesExample {
 	public static void main(String[] args) {
 		List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
-		//Parameter as an argument. Note that println is not a static method but a instance in System.out.
+		/**Parameter as an argument. Note that println is not a static method but a instance method of System.out.
+		The syntax is same for static method and instance method i.e. a double colon :: **/ 
 		numbers.forEach(System.out::println);
 		
 		//Parameter as an argument to static method
@@ -27,12 +28,14 @@ public class MethodReferencesExample {
 			.map(e -> e.toString())
 			.forEach(System.out::println);
 		
-		
+		/*Two parameters coming in as argument
+		  1st parameter - 0
+		  2nd parameter - (total, e) sent to Integer.sum
+		*/
 		System.out.println(numbers.stream().reduce(0, (total, e) -> Integer.sum(total, e)));
 
-		//Using Method Reference
-		System.out.println(numbers.stream()
-							.reduce(0, Integer::sum));
+		//Using Method Reference to replace the common parts.
+		System.out.println(numbers.stream().reduce(0, Integer::sum));
 
 		System.out.println(numbers.stream()
 				.map(e-> String.valueOf(e))
