@@ -11,12 +11,7 @@ public class FunctionComposition {
 	// Functional Composition is a series of compositions. Like a pipeline.
 	public static void main(String[] args) {
 		List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-		/*
-		Java 8 Stream API was introduced to implement internal iteration, that is better because java framework is 
-		in control of the iteration. It provides several features such as sequential and parallel execution, 
-		filtering based on the given criteria, mapping etc. Unlike a Set, Map or a List there is no data in a stream. A stream
-		is a bunch of functions which gets evaluated at some point. It is purely an abstraction for the data.
-		*/
+		
 		// To double the even numbers and total.
 		System.out.println(numbers.stream()
 				.filter(e -> e % 2 == 0)
