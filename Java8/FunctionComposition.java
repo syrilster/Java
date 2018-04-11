@@ -33,7 +33,8 @@ public class FunctionComposition {
 		  take stream of data, send it to a filter then map it to integer and finally sum it all.
 		*/
 		
-		//Using Parallel Streams
+		//Using Parallel Streams. Which is faster than normal streams. Not good always and should be used with caution.
+		// Parallel stream is going to use a lot of threads and resources to arrive at a result faster.
 		System.out.println(numbers.parallelStream()
 				.filter(e -> e % 2 == 0)
 				.mapToInt(FunctionComposition::compute)
