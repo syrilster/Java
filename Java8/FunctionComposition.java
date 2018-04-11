@@ -28,6 +28,11 @@ public class FunctionComposition {
 				.mapToInt(e -> e * 2)
 				.sum());
 		
+		/*
+		  The above style of writing code is called as Function Composition or pipeline. i.e In the above example
+		  take stream of data, send it to a filter then map it to integer and finally sum it all.
+		*/
+		
 		//Using Parallel Streams
 		System.out.println(numbers.parallelStream()
 				.filter(e -> e % 2 == 0)
@@ -36,6 +41,7 @@ public class FunctionComposition {
 	}
 
 	public static int compute(int number) {
+		// Assume this is time intensive
 		return number * 2;
 	}
 }
