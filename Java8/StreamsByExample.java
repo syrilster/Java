@@ -40,15 +40,17 @@ public class StreamsByExample {
 				.map(e -> e * 2.0)
 				.reduce(0.0, (carry, e) -> carry + e));
 
-		//We can write the above as follows. Here sum() is the reduce operation
+		//We can write the above as follows. Here sum() is the reduce operation. A specialized reduce function.
 		System.out.println("After reduce using sum()");
 		System.out.println(numbers.stream()
 				.filter(e -> e % 2 == 0)
 				.mapToDouble(e -> e * 2.0)
 				.sum());
-
+		
+		//Collect - A reduce operation
+		
 		List<Integer> duplicateNumbers = Arrays.asList(1, 2, 3, 4, 5, 1, 2, 3, 4, 5);
-		//Double the even values and put in a list
+		//Double the even values and put in a list. Collect will take care of thread safety automatically if it was used in parallel streams.
 		List<Integer> doubleOfEven = duplicateNumbers.stream()
 				.filter(e -> e % 2 == 0)
 				.map(e -> e * 2)
