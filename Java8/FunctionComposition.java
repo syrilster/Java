@@ -14,7 +14,8 @@ public class FunctionComposition {
 		/*
 		Java 8 Stream API was introduced to implement internal iteration, that is better because java framework is 
 		in control of the iteration. It provides several features such as sequential and parallel execution, 
-		filtering based on the given criteria, mapping etc.
+		filtering based on the given criteria, mapping etc. Unlike a Set, Map or a List there is no data in a stream. A stream
+		is a bunch of functions which gets evaluated at some point. It is purely an abstraction for the data.
 		*/
 		// To double the even numbers and total.
 		System.out.println(numbers.stream()
