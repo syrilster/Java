@@ -55,6 +55,8 @@ public class StreamsByExample {
 				.filter(e -> e % 2 == 0)
 				.map(e -> e * 2)
 				.collect(Collectors.toList());
+		              //.collect(toList());
+ 	    // Also possible to .collect(toSet());
 		printList(doubleOfEven);
 	}
 
