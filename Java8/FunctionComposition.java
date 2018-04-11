@@ -30,7 +30,7 @@ public class FunctionComposition {
 				.sum());
 		
 		/*
-		  The above style of writing code is called as Function Composition or pipeline. i.e In the above example
+		  The above style of writing code is called as Function Composition or pipeline of transformation. i.e In the above example
 		  take stream of data, send it to a filter then map it to integer and finally sum it all.
 		*/
 		
