@@ -30,7 +30,7 @@ th.start();
 
 * A stream pipeline consists of a source (such as a Collection, an array, a generator function) followed by zero or more intermediate operations and a terminal operation.
 
-##Intermediate Operations##
+**Intermediate Operations**
 Intermediate operations are not executed unit some terminal operation is invoked. They’re composed forming a pipeline of a Stream execution. The intermediate operation can be added to a Stream pipeline by methods:
 
 * filter()
@@ -41,7 +41,7 @@ Intermediate operations are not executed unit some terminal operation is invoked
 * limit()
 * skip()
 
-##Terminal Operations##
+**Terminal Operations**
 Terminal operations may traverse the stream to produce a result or a side effect. After the terminal operation is performed, the stream pipeline is considered consumed, and can no longer be used. In almost all cases, terminal operations are eager, completing their traversal of the data source and processing of the pipeline before returning.
 
 The eagerness of a terminal operation is important concerning infinite streams because at the moment of processing we need to think carefully if our Stream is properly bounded by, for example, a limit() transformation. Terminal operations are:
@@ -56,3 +56,23 @@ The eagerness of a terminal operation is important concerning infinite streams b
 * anyMatch()
 * findFirst()
 
+**Infinite Streams**
+
+Create an infinite stream of elements from zero that will be incremented by two and then limit that sequence before calling terminal operation.
+
+It is crucial to  use a limit() method before executing a collect() method that is a terminal operation, otherwise the program will run indefinitely:
+
+```
+// given
+Stream<Integer> infiniteStream = Stream.iterate(0, i -> i + 2);
+ 
+// when
+List<Integer> collect = infiniteStream
+  .limit(10)
+  .collect(Collectors.toList());
+ 
+// then
+assertEquals(collect, Arrays.asList(0, 2, 4, 6, 8, 10, 12, 14, 16, 18));
+```
+
+Above example created an infinite stream using an iterate() method. Then called a limit() transformation and a collect() terminal operation. Then in the resulting List, we will have first 10 elements of an infinite sequence due to a laziness of a Stream.
