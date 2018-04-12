@@ -31,6 +31,7 @@ th.start();
 * A stream pipeline consists of a source (such as a Collection, an array, a generator function) followed by zero or more intermediate operations and a terminal operation.
 
 **Intermediate Operations**
+
 Intermediate operations are not executed unit some terminal operation is invoked. They’re composed forming a pipeline of a Stream execution. The intermediate operation can be added to a Stream pipeline by methods:
 
 * filter()
@@ -42,6 +43,7 @@ Intermediate operations are not executed unit some terminal operation is invoked
 * skip()
 
 **Terminal Operations**
+
 Terminal operations may traverse the stream to produce a result or a side effect. After the terminal operation is performed, the stream pipeline is considered consumed, and can no longer be used. In almost all cases, terminal operations are eager, completing their traversal of the data source and processing of the pipeline before returning.
 
 The eagerness of a terminal operation is important concerning infinite streams because at the moment of processing we need to think carefully if our Stream is properly bounded by, for example, a limit() transformation. Terminal operations are:
