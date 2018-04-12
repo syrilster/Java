@@ -76,3 +76,17 @@ assertEquals(collect, Arrays.asList(0, 2, 4, 6, 8, 10, 12, 14, 16, 18));
 ```
 
 Above example created an infinite stream using an iterate() method. Then called a limit() transformation and a collect() terminal operation. Then in the resulting List, we will have first 10 elements of an infinite sequence due to a laziness of a Stream.
+
+**Another Example**
+
+Given a number k, and a count n, find the total of double of n even numbers starting with k, where sqrt of each number is > 20
+
+```
+return stream.iterate(k, e -> e + 1)
+             .filter(e -> e %2 == 0)
+             .filter(e -> Math.sqrt(e) > 20)
+             .mapToInt(e -> e * 2)
+             .limit(n)
+             .sum();
+
+```
