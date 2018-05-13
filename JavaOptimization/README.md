@@ -16,4 +16,7 @@ to read and understand.
 * Profile Feedback - The compiler uses profile feedback based on which methods are frequently called, the stack depth when they are called,
 the actual type of their arguments and so on.
 * The above also depends on the environment in which the code actually runs.
+* The best way to measure the performance of an application is the application itself, in conjunction with any external resources it uses.
+* If the application normally checks the credentials of a user by making LDAP calls, it should be tested in that mode. Stubbing out the LDAP calls is necessary so that the application is tested in its full configuration.
+
 
