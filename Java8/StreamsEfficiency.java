@@ -4,8 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- 1. Streams do lazy evaluation. All stream operations are pipelined until the terminal function is called. Like in the below example findFirst().
- 2. Streams does not work with the entire collection. Rather it slices across each element and applies the pipeline of operations. Check execution stack trace.
+ 1. Streams do lazy evaluation. All stream operations are pipelined until the terminal function is called. Like in the below 
+    example findFirst().
+ 2. Streams does not work with the entire collection. Rather it slices across each element and applies the 
+    pipeline of operations. Check execution stack trace.
  */
 public class StreamsEfficiency {
 	public static void main(String[] args) {
