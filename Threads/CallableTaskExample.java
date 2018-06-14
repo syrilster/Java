@@ -1,28 +1,43 @@
+package Threads;
 
-public class CallableExample extends SingleTask {
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
+public class CallableTaskExample {
     private boolean killed;
     public static final String dataSourceName = "jdbc/resource name";
 
-    @Override
     public void executeTask() {
-	killed = false;
-	boolean successful = run(getContext());
-	if (!successful || isKilled()) {
-		getContext().postEvent("Task did not finish successfully");
-	} else{
-		logger.debug("finished processing job!");
-		getContext().postEvent("Finished processing job");
-	}       
+        killed = false;
+        boolean successful = run();
+        if (!successful || isKilled()) {
+            //getContext().postEvent("Task did not finish successfully");
+        } else {
+            //logger.debug("finished processing job!");
+            //getContext().postEvent("Finished processing job");
+        }
     }
 
-    private boolean run(TaskContext context) {
+    private boolean run() {
         final int THREAD_COUNT = 5;
         final int BATCH_SIZE = 1000;
 
         ExecutorService pool = Executors.newFixedThreadPool(THREAD_COUNT);
 
-        context.postEvent("Thread Count: " + THREAD_COUNT);
-        context.postEvent("Batch Size: " + BATCH_SIZE);
+        //context.postEvent("Thread Count: " + THREAD_COUNT);
+        //context.postEvent("Batch Size: " + BATCH_SIZE);
         boolean successful = true;
 
         try (Connection conn = getNewConnection()) {
@@ -30,36 +45,36 @@ public class CallableExample extends SingleTask {
 
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setFetchSize(BATCH_SIZE);
-            ps.setQueryTimeout(Constants.NO_QUERY_TIMEOUT);
+            ps.setQueryTimeout(0);
             ResultSet resultSet = ps.executeQuery();
 
             ArrayList<Integer> listToProcess = new ArrayList<>();
-            ArrayList<Callable<CallableExample.CallableResponse>> callables = new ArrayList<>();
+            ArrayList<Callable<CallableTaskExample.CallableResponse>> callables = new ArrayList<>();
 
             while (resultSet.next() && !isKilled()) {
                 listToProcess.add(resultSet.getInt("subject_key"));
 
                 if (listToProcess.size() % BATCH_SIZE == 0 || resultSet.isLast()) {
-                    callables.add(createCallable(listToProcess, getContext()));
+                    callables.add(createCallable(listToProcess));
                     listToProcess = new ArrayList<>();
                 }
             }
 
-            context.postEvent("Number of chunks to process: " + callables.size());
-            List<Future<CallableExample.CallableResponse>> responses = pool.invokeAll(callables);
+            //context.postEvent("Number of chunks to process: " + callables.size());
+            List<Future<CallableResponse>> responses = pool.invokeAll(callables);
 
             // reprocess chunks if failed
             if (!isKilled()) {
-                for (Future<CallableExample.CallableResponse> response : responses) {
+                for (Future<CallableTaskExample.CallableResponse> response : responses) {
                     if (!response.get().isSuccessful()) {
-                        context.postEvent("Attempting to re-process failed chunk");
+                        //context.postEvent("Attempting to re-process failed chunk");
                         //call your logic method here
                     }
                 }
             }
         } catch (Exception e) {
             successful = false;
-            logger.severe(ExceptionUtils.getFullStackTrace(e));
+            //logger.severe(ExceptionUtils.getFullStackTrace(e));
         } finally {
             // shut down executor service
             pool.shutdown();
@@ -67,7 +82,7 @@ public class CallableExample extends SingleTask {
         return successful;
     }
 
-    private void expireConsentForNonMinors(List<Integer> subjectKeys, TaskContext taskContext) {
+    private void expireConsentForNonMinors(List<Integer> subjectKeys) {
         // Some logic here
     }
 
@@ -84,15 +99,15 @@ public class CallableExample extends SingleTask {
         if (killed) {
             return true;
         } else {
-            if (getContext().isStopping()) {
+            /*if (getContext().isStopping()) {
                 killed = true;
                 return true;
-            }
+            }*/
         }
         return false;
     }
 
-    private Callable<CallableResponse> createCallable(final List<Integer> subjectKeys, final TaskContext taskContext) {
+    private Callable<CallableResponse> createCallable(final List<Integer> subjectKeys) {
         return new Callable<CallableResponse>() {
             @Override
             public CallableResponse call() throws Exception {
@@ -100,14 +115,14 @@ public class CallableExample extends SingleTask {
                 boolean successful = true;
 
                 if (isKilled()) {
-                    logger.info("Stopping thread");
+                    //logger.info("Stopping thread");
                     return new CallableResponse(null, Boolean.FALSE);
                 }
 
                 try {
                     //call your logic method here
                 } catch (Exception e) {
-                    logger.severe(ExceptionUtils.getFullStackTrace(e));
+                    //logger.severe(ExceptionUtils.getFullStackTrace(e));
                     successful = false;
                 }
                 if (successful) {
