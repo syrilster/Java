@@ -16,7 +16,6 @@ public class StringToNumber {
      **/
 
     static int getNumberFromString(String s) {
-
         if (s == null) {
             throw new NumberFormatException("null");
         }

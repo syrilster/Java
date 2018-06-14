@@ -13,7 +13,7 @@ public class ReverseWords {
 		System.out.println(str);
 	}
 
-	public static void getReverse(char[] str) {
+	private static void getReverse(char[] str) {
 		int length = str.length;
 		int start = 0;
 		for (int i = 0; i < length; i++) {

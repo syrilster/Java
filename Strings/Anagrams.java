@@ -6,6 +6,9 @@ import java.util.Scanner;
 
 /**
  * Created by Syril on 06-04-2016.
+ * An anagram is a word or phrase formed by rearranging the letters of a different word or phrase,
+ * typically using all the original letters exactly once. For example, the word anagram can be
+ * rearranged into "naga ram"
  */
 public class Anagrams {
 
@@ -29,18 +32,16 @@ public class Anagrams {
                 return false;
         }
         return true;
-
     }
 
 
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
         String A = sc.next();
         String B = sc.next();
         boolean ret = isAnagram(A, B);
-        if (ret) System.out.println("Strings.Anagrams");
-        else System.out.println("Not Strings.Anagrams");
+        if (ret) System.out.println("Given Strings are Anagrams");
+        else System.out.println("Given Strings are Not Anagrams");
 
     }
 }
