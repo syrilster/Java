@@ -28,12 +28,12 @@ public class TestApp {
 		System.out.println("Movies sorted by year \n");
 		print(movies);
 
-		Collections.sort(movies, new RatingAndYearComparator());
+		movies.sort(new RatingAndYearComparator());
 		System.out.println("Movies sorted by year and rating \n");
 		print(movies);
 
 		System.out.println("Movies sorted by Name\n");
-		Collections.sort(movies, new NameComparator());
+		movies.sort(new NameComparator());
 		print(movies);
 	}
 

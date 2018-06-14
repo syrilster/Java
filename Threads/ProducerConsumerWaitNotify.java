@@ -10,8 +10,8 @@ public class ProducerConsumerWaitNotify {
 
     public static void main(String[] args) {
         Queue sharedQueue = new LinkedList<>();
-        ProducerForWaitNotify producer = new ProducerForWaitNotify(sharedQueue);
-        ConsumerForWaitNotify consumer = new ConsumerForWaitNotify(sharedQueue);
+        Threads.ProducerForWaitNotify producer = new Threads.ProducerForWaitNotify(sharedQueue);
+        Threads.ConsumerForWaitNotify consumer = new Threads.ConsumerForWaitNotify(sharedQueue);
         Thread t = new Thread(producer , "Producer Thread");
         Thread thread = new Thread(consumer , "Consumer Thread");
         t.start();
