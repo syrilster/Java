@@ -20,16 +20,16 @@ public class StringToNumber {
             throw new NumberFormatException("null");
         }
         int result = 0;
-        int j = 0;
+        int startIndex = 0;
         int length = s.length();
         boolean negative = false;
         char firstChar = s.charAt(0);
         if (firstChar == '-') {
             negative = true;
-            j = 1;
+            startIndex = 1;
         }
 
-        for (int i = j; i < length; i++) {
+        for (int i = startIndex; i < length; i++) {
             char num = s.charAt(i);
             result = result * 10 + num - '0';
         }
