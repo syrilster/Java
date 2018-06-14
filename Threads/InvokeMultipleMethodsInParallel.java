@@ -12,17 +12,17 @@ public class InvokeMultipleMethodsInParallel {
     public static void main(String[] args) throws ExecutionException {
         long start = System.nanoTime();
         ExecutorService executorService = Executors.newFixedThreadPool(3);
-        Set<Callable<String>> callables = new HashSet<>();
-        callables.add(new RequestResponse("connectApiOne"));
-        callables.add(new RequestResponse("connectApiTwo"));
-        callables.add(new RequestResponse("connectApiThree"));
+        Set<Callable<String>> callable = new HashSet<>();
+        callable.add(new RequestResponse("connectApiOne"));
+        callable.add(new RequestResponse("connectApiTwo"));
+        callable.add(new RequestResponse("connectApiThree"));
 
-        List<Future<String>> futures = null;
+        List<Future<String>> futureList;
         String resultString = "";
         try {
-            futures = executorService.invokeAll(callables);
-            for (Future<String> future : futures) {
-                resultString = resultString + future.get();
+            futureList = executorService.invokeAll(callable);
+            for (Future<String> future : futureList) {
+                resultString = resultString + future.get() + "\n";
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -40,7 +40,7 @@ public class InvokeMultipleMethodsInParallel {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return "SuccessFromOne";
+        return "Success_from_One";
     }
 
     private static String connectApiTwo() {
@@ -49,7 +49,7 @@ public class InvokeMultipleMethodsInParallel {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return "SuccessFromTwo";
+        return "Success_from_Two";
     }
 
     private static String connectApiThree() {
@@ -58,19 +58,18 @@ public class InvokeMultipleMethodsInParallel {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return "SuccessFromThree";
+        return "Success_from_Three";
     }
 
     private static class RequestResponse implements Callable {
-
         String apiName;
 
-        public RequestResponse(String apiName) {
+        RequestResponse(String apiName) {
             this.apiName = apiName;
         }
 
         @Override
-        public String call() throws Exception {
+        public String call() {
             switch (apiName) {
                 case "connectApiOne":
                     return InvokeMultipleMethodsInParallel.connectApiOne();

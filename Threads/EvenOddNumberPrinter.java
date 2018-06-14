@@ -9,7 +9,7 @@ public class EvenOddNumberPrinter {
     public static class Printer {
         boolean isEvenPrinted = true;
 
-        public void printOdd(int number) throws InterruptedException {
+        private void printOdd(int number) throws InterruptedException {
             synchronized (this) {
                 if (!isEvenPrinted)
                     wait();
