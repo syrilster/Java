@@ -12,6 +12,16 @@ import java.util.Scanner;
  */
 public class Anagrams {
 
+    /**
+     * 1. Create an array of size 256 initialized with 0′s.
+     * 2. For first string increment count of character in count array.
+     * 3. For second string decrement the count of character from count array.
+     * 4. Repeat steps 2 and 3 till we reach end of any string.
+     * 5. Check if array contains only zero then strings are anagram otherwise not.
+     * @param s1
+     * @param s2
+     * @return
+     */
     static boolean isAnagram(String s1, String s2) {
 
         char allChars[] = new char[256];
