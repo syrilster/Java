@@ -5,7 +5,7 @@ and they have nothing to do with ForkJoinPool, which is just an arbitrary class 
 It would also lead to possibly very surprising and undesired effects. Imagine for example a user passing a task to an ExecutorService that waits on a Future, and then finding out that 
 the task hangs very long in Future.get() just because the running thread stole some other (long-running) work item instead of waiting for the Future and 
 continuing immediately after the result is available. Once a thread starts working on another task, it cannot return to the original task until the second task is finished. 
-Thus it is actually a good thing that other blocking methods do not do work stealing. For a ForkJoinTask, this problem does not exist, because it is not important that the primary task 
+Thus it is actually a good thing that other blocking methods do not do work stealing. **For a ForkJoinTask, this problem does not exist**, because it is not important that the primary task 
 is continued as soon as possible, it is only important that all tasks together are handled as efficiently as possible.
 
 It is also not possible to implement your own method for doing work stealing inside a ForkJoinPool, because all the relevant parts are not public.
