@@ -10,6 +10,7 @@ is continued as soon as possible, it is only important that all tasks together a
 
 It is also not possible to implement your own method for doing work stealing inside a ForkJoinPool, because all the relevant parts are not public.
 
+## Managed Blocking
 However, there is actually a second method how starvation deadlocks can be prevented. This is called managed blocking. It does not use work stealing (to avoid the problem mentioned above), 
 but also needs the thread that is going to be block to actively cooperate with the thread pool. With managed blocking, the thread tells the thread pool that it may be 
 blocked before it calls the potentially blocking method, and also informs the pool when the blocking method is finished. The thread pool then knows that there is a risk of a 
