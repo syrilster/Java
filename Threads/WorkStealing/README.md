@@ -19,7 +19,7 @@ managed blocking instead of with ForkJoinTask and work stealing, the number of a
 a lot of tasks will be created and given to threads that immediately block and wait for results from sub-tasks).
 However, a starvation deadlock is still prevented, and it avoids the problem that a task has to wait a long time because its thread started working on another task in the mean time.
 
-The ForkJoinPool of Java also supports managed blocking. To use this, one needs to implement the interface ForkJoinPool.ManagedBlocker such that the potentially-blocking method that 
+The ForkJoinPool of Java also supports managed blocking. To use this, one needs to implement the interface **ForkJoinPool.ManagedBlocker** such that the potentially-blocking method that 
 the task wants to execute is called from within the block method of this interface. Then the task may not call the blocking method directly, but instead needs to call 
 the static method ForkJoinPool.managedBlock(ManagedBlocker). This method handles the communication with the thread pool before and after the blocking. 
 It also works if the current task is not executed within a ForkJoinPool, then it just calls the blocking method.
