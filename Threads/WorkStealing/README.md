@@ -25,7 +25,8 @@ the task wants to execute is called from within the block method of this interfa
 the static method ForkJoinPool.managedBlock(ManagedBlocker). This method handles the communication with the thread pool before and after the blocking. 
 It also works if the current task is not executed within a ForkJoinPool, then it just calls the blocking method.
 
-Java 7 API that actually uses managed blocking is the class Phaser. (This class is a synchronization barrier like mutexes and latches, but more flexible and powerful.) 
+## Managed Blocking Example in Java 7
+The Java 7 API that actually uses managed blocking is the class Phaser. (This class is a synchronization barrier like mutexes and latches, but more flexible and powerful.) 
 So synchronizing with a Phaser inside a ForkJoinPool task should use managed blocking and can avoid starvation deadlocks 
 (but ForkJoinTask.join() is still preferable because it uses work stealing instead of managed blocking). This works regardless of whether you use the ForkJoinPool 
 directly or via its ExecutorService interface. However, it will not work if you use any other ExecutorService like those created by the class Executors, because these do not support
