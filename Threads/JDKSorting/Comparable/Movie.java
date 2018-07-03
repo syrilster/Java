@@ -43,4 +43,13 @@ public class Movie implements Comparable<Movie> {
 	public void setYear(int year) {
 		this.year = year;
 	}
+
+	@Override
+	public String toString() {
+		return "Movie{" +
+				"rating=" + rating +
+				", name='" + name + '\'' +
+				", year=" + year +
+				'}';
+	}
 }
