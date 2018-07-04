@@ -1,4 +1,4 @@
-package Java8;
+package Threads;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -17,28 +17,32 @@ public class CompletableFutureExample {
         CompletableFuture<String> callThree = CompletableFuture.supplyAsync(CompletableFutureExample::connectApiThree);
         CompletableFuture<String> result = CompletableFuture.allOf(callOne, callTwo, callThree).
                 thenApplyAsync(test -> convert(callOne.join(), callTwo.join(), callThree.join()));
-        /*try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/
-        try {
-            System.out.println(result.get());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
+
+        invokeInParallel(result);
         long duration = (System.nanoTime() - start) / 1_000_000;
-        System.out.print("Processed time\n" + duration);
-        //Using sequential
+        System.out.println("Processed time --> " + duration);
+
         start = System.nanoTime();
+        invokeInSequence();
+        duration = (System.nanoTime() - start) / 1_000_000;
+        System.out.println("Processed time --> " + duration);
+    }
+
+    private static void invokeInSequence() {
+        System.out.print("Invoking the methods sequentially");
         String s1 = connectApiOne();
         String s2 = connectApiTwo();
         String s3 = connectApiThree();
-        System.out.println("\n" +convert(s1, s2, s3));
-        duration = (System.nanoTime() - start) / 1_000_000;
-        System.out.print("Processed time using sequential\n" + duration);
+        System.out.println("\n" + convert(s1, s2, s3));
+    }
+
+    private static void invokeInParallel(CompletableFuture<String> result) {
+        System.out.println("Invoking the methods in parallel using Completable Future");
+        try {
+            System.out.println(result.get());
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 
     public static String convert(String s1, String s2, String s3) {
