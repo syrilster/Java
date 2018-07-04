@@ -35,21 +35,10 @@ public class DeadLock {
     }
 
     public static void main(String[] args){
-        final Resource r1 = new Resource("r1");
-        final Resource r2 = new Resource("r2");
+        final Resource resourceOne = new Resource("resourceOne");
+        final Resource resourceTwo = new Resource("resourceTwo");
 
-        new Thread()
-        {
-            public void run() {
-                r1.print(r2);
-            }
-        }.start();
-
-        new Thread()
-        {
-            public void run() {
-                r2.print(r1);
-            }
-        }.start();
+        new Thread(() -> resourceOne.print(resourceTwo)).start();
+        new Thread(() -> resourceTwo.print(resourceOne)).start();
     }
 }
