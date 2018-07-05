@@ -24,15 +24,15 @@
 * With managed blocking, the thread tells the thread pool that it may be blocked before it calls the potentially blocking method, and also informs the pool when the blocking method is finished. The thread pool then knows that there is a risk of a starvation deadlock, and may spawn additional threads if all of its threads are currently in some blocking operation and there are still other tasks to execute. 
 * Note that this is less efficient than work stealing, because of the overhead of the additional threads. If you implement a recursive parallel algorithm with ordinary futures and managed blocking instead of with ForkJoinTask and work stealing, the number of additional threads can get very large (because in the "divide" phase of the algorithm, a lot of tasks will be created and given to threads that immediately block and wait for results from sub-tasks).
 * However, in the above strategy, a starvation deadlock is still prevented, and it avoids the problem that a task has to wait for a long time because its thread started working on another task in the mean time.
-
-The ForkJoinPool of Java also supports managed blocking. To use this, one needs to implement the interface **ForkJoinPool.ManagedBlocker** such that the potentially-blocking method that 
-the task wants to execute is called from within the block method of this interface. Then the task may not call the blocking method directly, but instead needs to call 
-the static method ForkJoinPool.managedBlock(ManagedBlocker). This method handles the communication with the thread pool before and after the blocking. 
+* The ForkJoinPool of Java also supports managed blocking. To use this, one needs to implement the interface **ForkJoinPool.ManagedBlocker** such that the potentially-blocking method that the task wants to execute is called from within the block method of this interface. Then the task may not call the blocking method directly, but instead needs to call the static method ForkJoinPool.managedBlock(ManagedBlocker). This method handles the communication with the thread pool before and after the blocking. 
 It also works if the current task is not executed within a ForkJoinPool, then it just calls the blocking method.
 
-## Managed Blocking Example in Java 7
-The Java 7 API that actually uses managed blocking is the class Phaser. (This class is a synchronization barrier like mutexes and latches, but more flexible and powerful.) 
-So synchronizing with a Phaser inside a ForkJoinPool task should use managed blocking and can avoid starvation deadlocks 
-(but ForkJoinTask.join() is still preferable because it uses work stealing instead of managed blocking). This works regardless of whether you use the ForkJoinPool directly or via its ExecutorService interface. However, it will not work if you use any other ExecutorService like those created by the class Executors, because these do not support managed blocking.
+## Managed Blocking Example in Java
+* The Java 7 API that actually uses managed blocking is the **class Phaser**. (This class is a synchronization barrier like mutexes and latches, but more flexible and powerful.) 
+* The Phaser allows us to build logic in which threads need to wait on the barrier before going to the next step of execution.
+* We can coordinate multiple phases of execution, reusing a Phaser instance for each program phase. Each phase can have a different number of threads waiting for advancing to another phase.
+* To participate in the coordination, the thread needs to register() itself with the Phaser instance.
+* The thread signals that it arrived at the barrier by calling the arriveAndAwaitAdvance(), which is a blocking method. **When the number of arrived parties is equal to the number of registered parties, the execution of the program will continue, and the phase number will increase**. We can get the current phase number by calling the getPhase() method.
+* When the thread finishes its job, we should call the arriveAndDeregister() method to signal that the current thread should no longer be accounted for in this particular phase.
 
 http://www.baeldung.com/java-phaser
