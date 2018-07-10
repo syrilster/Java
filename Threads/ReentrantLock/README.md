@@ -19,9 +19,13 @@ the current thread already owns it. If a thread that holds the lock acquires it 
 
 * ReentrantLock provides many features like fairness, ability to interrupt a thread waiting for a lock only for a specified period. 
 * **Fairness** - ReentrantLock has one constructor which takes boolean value as an argument. This option lets you choose whether you want a fair or an unfair lock depending upon whether the boolean value is true or false. A **fair lock** is one where the threads acquire the lock in the same order they asked for it; whereas in case of an unfair lock a thread can sometimes acquire a lock before another thread that asked for it first.
+
 ```public ReentrantLock(boolean fair)```
+
 * **Lock interruptibly** - ReentrantLock provides a method lockInterruptibly, where the thread acquires a lock if it is not interrupted.
+
 ```public void lockInterruptibly() throws InterruptedException```
+
  * **Ability to check if the lock is being held** - ReentrantLock provides ability to check if the lock is already being held using tryLock() method.
 
 * **tryLock()** - Acquires the lock only if it is not held by another thread at the time of invocation.
