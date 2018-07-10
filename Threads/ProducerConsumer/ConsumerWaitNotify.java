@@ -1,15 +1,12 @@
-package Threads;
+package Threads.ProducerConsumer;
 
 import java.util.Queue;
 
-/**
- * Created by syrils on 3/23/16.
- */
-class ConsumerForWaitNotify implements Runnable {
+public class ConsumerWaitNotify implements Runnable {
 
-    private Queue sharedQueue;
+    private final Queue sharedQueue;
 
-    ConsumerForWaitNotify(Queue sharedQueue) {
+    public ConsumerWaitNotify(Queue sharedQueue) {
         this.sharedQueue = sharedQueue;
     }
 
@@ -25,10 +22,10 @@ class ConsumerForWaitNotify implements Runnable {
         }
     }
 
-    void consume() {
+    private void consume() {
 
         synchronized (sharedQueue) {
-            if (sharedQueue.size() == 0) {
+            while (sharedQueue.size() == 0) {
                 System.out.println("Shared Queue size is Zero. Waiting for producer to produce");
                 try {
                     sharedQueue.wait();
@@ -40,7 +37,7 @@ class ConsumerForWaitNotify implements Runnable {
 
         synchronized (sharedQueue) {
             try {
-                Thread.sleep((long)(Math.random() * 2000));
+                Thread.sleep((long) (Math.random() * 2000));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

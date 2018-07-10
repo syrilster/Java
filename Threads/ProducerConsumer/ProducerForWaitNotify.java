@@ -1,4 +1,4 @@
-package Threads;
+package Threads.ProducerConsumer;
 
 import java.util.Queue;
 
@@ -6,10 +6,10 @@ import java.util.Queue;
  * Created by syrils on 3/23/16.
  */
 public class ProducerForWaitNotify implements Runnable {
-    private Queue sharedQueue;
-    private int MAX_SIZE = 2;
+    private final Queue sharedQueue;
+    private final int MAX_SIZE = 2;
 
-    ProducerForWaitNotify(Queue q) {
+    public ProducerForWaitNotify(Queue q) {
         this.sharedQueue = q;
     }
 
@@ -22,7 +22,7 @@ public class ProducerForWaitNotify implements Runnable {
 
     void produce(int i) {
         synchronized (sharedQueue) {
-            if (sharedQueue.size() == MAX_SIZE)
+            while (sharedQueue.size() == MAX_SIZE)
                 try {
                     System.out.println("Shared Queue size has reached the limit. Waiting for consumers to consume");
                     sharedQueue.wait();
