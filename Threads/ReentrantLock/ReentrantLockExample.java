@@ -31,10 +31,13 @@ public class ReentrantLockExample {
         public void run() {
             System.out.println("Thread " + threadName + " is entering the run method");
             lock.lock();
-            System.out.println("Thread " + threadName + " acquired the lock");
             try {
+                System.out.println("Thread " + threadName + " acquired the lock");
                 SharedResource.count++;
                 System.out.println("Thread " + threadName + " updated the counter and value is " + SharedResource.count);
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             } finally {
                 System.out.println("Thread " + threadName + " is releasing the lock");
                 lock.unlock();
