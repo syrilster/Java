@@ -1,0 +1,2 @@
+## StampedLock in Java
+In Java 8 a new kind of lock StampedLock is added which apart from providing separate read and write locks also has a feature for optimistic locking for read operations. StampedLock in Java also provides method to upgrade read lock to write lock which is not there in ReentrantReadWriteLock in Java.
