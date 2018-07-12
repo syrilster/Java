@@ -19,7 +19,7 @@ But it is more suited where threads should wait for a phase to finish, then adva
 * So the first thing is to create a new instance of Phaser.
 * Next thing is to register one or more parties with the Phaser. That can be done using register(), bulkRegister(int) or by specifying number of parties in the constructor.
 
-  **resgister() method**
+  **register()**
 
   ```public int register()```
 
@@ -46,8 +46,8 @@ But it is more suited where threads should wait for a phase to finish, then adva
 * Upon termination, all synchronization methods immediately return without waiting for advance, as indicated by a negative return value. Similarly, attempts to register upon termination have no effect.
 
 ## Phaser Tiering
-* Phasers may be tiered (i.e., constructed in tree structures) to reduce contention. P
-* hasers with large numbers of parties may experience heavy synchronization contention costs. These may be set up as a groups of sub-phasers which share a common parent. 
+* Phasers may be tiered (i.e., constructed in tree structures) to reduce contention.
+* Phasers with large numbers of parties may experience heavy synchronization contention costs. These may be set up as a groups of sub-phasers which share a common parent. 
 * This may greatly increase throughput even though it incurs greater per-operation overhead.
 
 ## Phaser Monitoring
