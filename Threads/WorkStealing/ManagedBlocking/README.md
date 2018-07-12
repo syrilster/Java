@@ -16,3 +16,43 @@ Though Phaser can be used to synchronize a single phase, in that case it acts mo
 But it is more suited where threads should wait for a phase to finish, then advance to next phase, wait again for that phase to finish and so on.
 
 ## How Phaser in Java works
+* So the first thing is to create a new instance of Phaser.
+* Next thing is to register one or more parties with the Phaser. That can be done using register(), bulkRegister(int) or by specifying number of parties in the constructor.
+
+  **resgister() method**
+
+  ```public int register()```
+
+  Adds a new unarrived party to this phaser. It returns the arrival phase number to which this registration applied.
+
+* Phaser is a synchronization barrier so we have to make Phaser wait until all registered parties finish a phase. That waiting can be done using **arrive()** or any of the variants of arrive() method. When the number of arrivals is equal to the parties which are registered that phase is considered completed and it advances to next phase (if there is any), or terminate.
+
+  **arrive() method**
+
+  Arrives at this phaser, without waiting for others to arrive. Note that arrive() method does not suspend execution of the calling thread. Returns the arrival phase number, or a negative value if terminated. Note that this method should not be called by an unregistered party.
+
+  **arriveAndDeregister**
+
+  Arrives at this Phaser and deregisters from it without waiting for others to arrive. Returns the arrival phase number, or a negative value if terminated.
+
+  **arriveAndAwaitAdvance**
+
+  Arrives at this phaser and awaits others. Returns the arrival phase number, or the (negative) current phase if terminated. If you want to wait for all the other registered parties to complete a given phase then use this method.
+
+  Note that each generation of a phaser has an associated phase number. The phase number starts at zero, and advances when all parties arrive at the phaser, wrapping around to zero after reaching Integer.MAX_VALUE.
+
+## Phaser termination
+* A Phaser may enter a termination state, that may be checked using method **isTerminated()**.
+* Upon termination, all synchronization methods immediately return without waiting for advance, as indicated by a negative return value. Similarly, attempts to register upon termination have no effect.
+
+## Phaser Tiering
+* Phasers may be tiered (i.e., constructed in tree structures) to reduce contention. P
+* hasers with large numbers of parties may experience heavy synchronization contention costs. These may be set up as a groups of sub-phasers which share a common parent. 
+* This may greatly increase throughput even though it incurs greater per-operation overhead.
+
+## Phaser Monitoring
+* Phaser class has several methods for monitoring. These methods can be called by any caller not only by registered parties.
+* getRegisteredParties() - Returns the number of parties registered at this phaser.
+* getArrivedParties() - Returns the number of registered parties that have arrived at the current phase of this phaser.
+* getUnarrivedParties() - Returns the number of registered parties that have not yet arrived at the current phase of this phaser.
+* getPhase() - Returns the current phase number.
