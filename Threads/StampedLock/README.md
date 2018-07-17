@@ -11,7 +11,7 @@ Method **validate(long)** is used to validate if the values read optimistically 
 
 ## Lock conversion
 
-StampedLock class in Java also supports methods that conditionally provide conversions across the three modes. The forms of these methods are designed to help reduce some of the code bloat that otherwise occurs in retry-based designs.
+StampedLock class in Java also supports methods that conditionally provide conversions across the three modes. The forms of these methods are designed to **help reduce some of the code bloat that otherwise occurs in retry-based designs**.
 
 * **tryConvertToWriteLock(long stamp)** - If the lock state matches the given stamp, performs one of the following actions. 
   * If the stamp represents holding a write lock, returns it. 
