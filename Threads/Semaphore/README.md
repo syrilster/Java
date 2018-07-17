@@ -25,4 +25,7 @@ A semaphore initialized to one, and which is used such that it only has at most 
 ## Semaphore Usage in Java
 * Semaphores are often used to restrict the number of threads than can access some (physical or logical) resource.
 * Semaphore can also be used to facilitate inter-thread communication like in producer-consumer kind of scenario.
-Let's see one example where Semaphore is used to control shared access. Here we have a shared counter and three threads using the same shared counter and trying to increment and then again decrement the count. So every thread should first increment the count to 1 and then again decrement it to 0.
+
+This package demonstrates a producer-consumer implementation using semaphores. Idea is to have 2 semaphores: when first is acquired release second, when second is acquired release first. This way shared resource has controlled access and there is inter-thread communication between the threads.
+
+## Remember unlike RentrantLock, Semaphore can be released by a thread other than the owner (as semaphores have no notion of ownership).
