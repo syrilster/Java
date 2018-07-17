@@ -19,7 +19,10 @@ StampedLock class in Java also supports methods that conditionally provide conve
   * In reading mode and there are no other readers or 
   * In optimistic mode and the lock is available. 
 
-* **tryConvertToWriteLock(long stamp)** - If the lock state matches the given stamp, performs one of the following actions. If the stamp represents holding a write lock, returns it. Or, if a read lock, if the write lock is available, releases the read lock and returns a write stamp. Or, if an optimistic read, returns a write stamp only if immediately available. This method returns zero in all other cases.
+* **tryConvertToWriteLock(long stamp)** - If the lock state matches the given stamp, performs one of the following actions. 
+  * If the stamp represents holding a write lock, returns it. 
+  * If a read lock and if the write lock is available, releases the read lock and returns a write stamp. 
+  * If an optimistic read, returns a write stamp only if immediately available. This method returns zero in all other cases.
 * **tryConvertToReadLock(long stamp)** - If the lock state matches the given stamp, performs one of the following actions. 
   * If the stamp represents holding a write lock, releases it and obtains a read lock. 
   * If a read lock, returns it. 
