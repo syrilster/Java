@@ -1,14 +1,14 @@
 /**
  * Created by Syril on 09-04-2016.
  */
-public class CustomHashMap <E> {
+public class CustomHashMap<E> {
 
 
     private static final int SIZE = 16;
     private Entry entrySet[] = new Entry[SIZE];
 
 
-    public static class Entry <E> {
+    public static class Entry<E> {
         private final E key;
         private E value;
         Entry next;
@@ -70,26 +70,20 @@ public class CustomHashMap <E> {
 
     public static void main(String[] args) {
         CustomHashMap map = new CustomHashMap();
-        map.put("Syril", "Test");
-        map.put("Sandeep", "new Test");
-        map.put("Vinay", "new Test");
-        map.put("Ankur", "new Test");
-        map.put("Prashanth", "new Test");
-        map.put("Suhas", "new Test");
-        map.put("Anju", "new Test");
-        map.put("Ajit", "new Test");
-        map.put("Neel", "new Test");
-        map.put("Vinod", "new Test");
-        map.put("Ram", "new Test");
-        map.put("Sadasivan", "new Test");
-        map.put("Kiran", "new Test");
-        map.put("Reddy", "new Test");
-        map.put("Mac", "new Test");
-        map.put(1, "new Test");
+        map.put("Syril", "Syril");
+        map.put("Sandeep", "Sandeep");
+        map.put("Vinay", "Vinay");
+        map.put("Ankur", "Ankur");
+        map.put("Prashanth", "Prashanth");
+        map.put("Suhas", "Suhas");
+        map.put("Anju", "Anju");
+        map.put("Ajit", "Ajit");
+        map.put("Neel", "Neel");
+        map.put("Vinod", "Vinod");
+        map.put("Ram", "Ram");
+        map.put("Sadasivan", "Sadasivan");
 
-        Entry e = map.get(1);
+        Entry e = map.get("Suhas");
         System.out.println(e.getValue());
-
-
     }
 }
