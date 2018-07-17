@@ -20,7 +20,9 @@ If a Semaphore is initialized with 5 permits that means atmost 5 threads can cal
 When fairness is set true, the semaphore guarantees that threads invoking any of the acquire methods are selected to obtain permits in the order in which their invocation of those methods was processed (first-in-first-out; FIFO).
 
 ## Binary Semaphore
-A semaphore initialized to one, and which is used such that it only has at most one permit available, can serve as a mutual exclusion lock. This is more commonly known as a binary semaphore, because it only has two states: one permit available, or zero permits available. When used in this way, the binary semaphore has the property (unlike many Lock implementations), that the "lock" can be released by a thread other than the owner (as semaphores have no notion of ownership). This can be useful in some specialized contexts, such as deadlock recovery.
+* A semaphore initialized to one, and which is used such that it only has at most one permit available, can serve as a mutual exclusion lock. 
+* This is more commonly known as a binary semaphore, because it only has two states: one permit available, or zero permits available. 
+* When used in this way, the binary semaphore has the property (unlike many Lock implementations), that the "lock" can be released by a thread other than the owner (as semaphores have no notion of ownership). This can be useful in some specialized contexts, such as deadlock recovery.
 
 ## Semaphore Usage in Java
 * Semaphores are often used to restrict the number of threads than can access some (physical or logical) resource.
