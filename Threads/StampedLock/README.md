@@ -13,12 +13,6 @@ Method **validate(long)** is used to validate if the values read optimistically 
 
 StampedLock class in Java also supports methods that conditionally provide conversions across the three modes. The forms of these methods are designed to help reduce some of the code bloat that otherwise occurs in retry-based designs.
 
-* **tryConvertToWriteLock(long)**
-  For example, method  attempts to "upgrade" a mode, returning a valid write stamp if:
-  * Already in writing mode 
-  * In reading mode and there are no other readers or 
-  * In optimistic mode and the lock is available. 
-
 * **tryConvertToWriteLock(long stamp)** - If the lock state matches the given stamp, performs one of the following actions. 
   * If the stamp represents holding a write lock, returns it. 
   * If a read lock and if the write lock is available, releases the read lock and returns a write stamp. 
