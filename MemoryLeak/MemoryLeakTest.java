@@ -2,8 +2,6 @@ package MemoryLeak;
 
 import org.junit.Test;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.Map;
 
 public class MemoryLeakTest {
@@ -12,7 +10,7 @@ public class MemoryLeakTest {
     public void givenMap_whenNoEqualsNoHashCodeMethods_thenOutOfMemory() {
         Map< Object, Object> map = System.getProperties();
         while (true) {
-            map.put(new Key("key"), "value");
+            map.put(new MemoryLeak.Key("key"), "value");
         }
     }
 }

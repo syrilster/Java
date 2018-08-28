@@ -29,7 +29,7 @@ public class StreamsByExample {
 				.map(e -> e * 2.0) // Type going in is Integer but the Type Going out is a double
 				.forEach(System.out::println);
 
-		/* Unlike Map and Filter, Reduce cuts accross elements in the input i.e. it will consider all the input values 
+		/* Unlike Map and Filter, Reduce cuts across elements in the input i.e. it will consider all the input values
 		and applies the operation to it. But Map and Filter works differently i.e stick to their Swim lanes*/
 		
 		// In the below example reduce function starts with a initial value of 0.0 and perform an addition operation on
