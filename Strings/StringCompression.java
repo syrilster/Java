@@ -7,34 +7,41 @@ import java.util.*;
  */
 public class StringCompression {
     public static void main(String[] args) {
-        System.out.println(compress("aabbbccaaa"));
+        System.out.println(compress("!!!3333"));
     }
 
-    static String compress(String str) {
-        if (str.isEmpty()) {
+    static String compress(String input) {
+        if (input.isEmpty()) {
             return "";
         }
 
-        char[] chars = str.toCharArray();
-        StringBuilder builder = new StringBuilder();
+        char[] chars = input.toCharArray();
+        StringBuilder outputBuilder = new StringBuilder();
 
         int count = 1;
-        char prev = chars[0];
+        char previous = chars[0];
         for (int i = 1; i < chars.length; i++) {
             char current = chars[i];
-            if (current == prev) {
+            if (current == previous) {
                 count++;
             } else {
-                builder.append(prev).append(count);
+                appendOutputBasedOnCount(count, previous, outputBuilder);
                 count = 1;
             }
-            prev = current;
+            previous = current;
         }
 
-        String compressedString = builder.append(prev).append(count).toString();
+        return appendOutputBasedOnCount(count, previous, outputBuilder);
 
-        return compressedString.length() > str.length() ? str : compressedString;
+    }
 
+    private static String appendOutputBasedOnCount(int count, char input, StringBuilder outputBuilder) {
+        if (count == 1) {
+            outputBuilder.append(input);
+        } else {
+            outputBuilder.append(count).append(input);
+        }
+        return outputBuilder.toString();
     }
 
 }
