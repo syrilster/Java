@@ -38,5 +38,18 @@ public class StringManualConversion {
         }
         return finalString;
     }
+
+    /**
+     * char are integer, 'A' to 'Z' is 65 to 90 and 'a' to 'z' is 97 to 122.
+     * So if you have a char between 'a' and 'z' you want to subtract the difference between 'A' and 'a' to your char.
+     * 'a' - 32 = 'A'
+     * (or)
+     * 'a' - ('a' - 'A') = 'A'
+     * @param inputCharacter
+     * @return
+     */
+    private static char toUpperCase(char inputCharacter) {
+        return (char) (inputCharacter - ('a' - 'A'));
+    }
 }
 
