@@ -1,5 +1,7 @@
 package Arrays;
 
+import java.util.Arrays;
+
 /**
  * Created by Syril on 21-05-2016.
  */
@@ -11,17 +13,8 @@ public class DutchNationalFlagProblem {
         int arr_size = arr.length;
         sort012(arr, arr_size);
         System.out.println("Array after seggregation ");
-        printArray(arr, arr_size);
+        Arrays.stream(arr).forEach(System.out::print);
     }
-
-    /* Utility function to print array arr[] */
-    static void printArray(int arr[], int arr_size) {
-        int i;
-        for (i = 0; i < arr_size; i++)
-            System.out.print(arr[i] + " ");
-        System.out.println("");
-    }
-
 
     static void sort012(int a[], int arr_size) {
         int low = 0;
