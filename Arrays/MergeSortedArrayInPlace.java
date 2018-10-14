@@ -3,7 +3,7 @@ package Arrays;
 /**
  * @author ssadasivan
  * @since 3/31/2017.
- * Iterate through every element of ar2[] starting from last element. Do following for every element ar2[i]
+ * Iterate through every element of array two starting from last element. Do following for every element of array two.
 	a) Store last element of ar1[i]: last = ar1[i]
 	b) Loop from last element of ar1[] while element ar1[j] is 	smaller than ar2[i].
 			ar1[j+1] = ar1[j] // Move element one position ahead

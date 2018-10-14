@@ -1,32 +1,28 @@
 package Arrays;
 
+import java.util.stream.IntStream;
+
 /**
- * Created by ssadasivan on 28-12-2016.
+ * Algorithm:
+ * 1. Get the sum of all the numbers
+ * 2. Apply formula total = n*(n+1)/2
+ * 3. Subtract the total from sum and you will get the missing number.
  */
 public class MissingNumber {
 
     public static void main(String[] args) {
-        int[] arr = {1, 2, 4, 5, 6};
-
-        int missingNumber = findMissingNumber(arr);
-
-        System.out.println("Missing number : " + missingNumber);
+        int[] inputArray = {1, 2, 4, 6, 3, 7, 5};
+        System.out.println("Missing number : " + findMissingNumber(inputArray));
     }
 
     private static int findMissingNumber(int[] arr) {
-        int total = calculateTotal(arr.length);
+        int total = calculateTotal(arr.length + 1);
         int sum = calculateSum(arr);
         return Math.abs(total - sum);
     }
 
     private static int calculateSum(int[] arr) {
-        int sum = 0;
-
-        for (int i = 0; i < arr.length; i++) {
-            sum += arr[i];
-        }
-
-        return sum;
+        return IntStream.of(arr).sum();
     }
 
     private static int calculateTotal(int n) {
