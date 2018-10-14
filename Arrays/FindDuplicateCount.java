@@ -5,63 +5,43 @@ package Arrays;
  */
 public class FindDuplicateCount {
 
-    public static int firstOccurrence(int[] array, int x) {
-        int l = 0, r = array.length - 1, result = -1;
-
-        while (l <= r) {
-            int mid = (l + r) / 2;
-            if (array[mid] < x) {
-                l = mid + 1;
-            } else if (array[mid] > x) {
-                r = mid - 1;
-            } else if (array[mid] == x) {
-                result = mid;
-                r = mid - 1;
-            }
-        }
-
-        return result;
-    }
-
-
-    public static int lastOccurrence(int[] array, int x) {
-
-        int l = 0, r = array.length - 1, result = -1;
-        while (l <= r) {
-            int mid = (l + r) / 2;
-
-            if (array[mid] > x) {
-                r = mid - 1;
-
-            } else if (array[mid] < x) {
-                l = mid + 1;
-
-            } else if (array[mid] == x) {
-                result = mid;
-                l = mid + 1;
-            }
-        }
-        return result;
-    }
-
     public static void main(String[] args) {
-
         int[] array1 = {1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 9, 9, 10};  // x = 9, ans = 4
         int[] array2 = {1, 1, 2, 2, 2, 2, 3};  // x = 3, ans = 1
 
         System.out.println(count(array1, 9));
-        System.out.println(count(array2, 3));
-
-
+        System.out.println(count(array2, 2));
     }
 
-    public static int count(int[] array, int x) {
+    private static int findElementBasedOnOccurance(int[] inputArray, int elementToSearch, boolean firstOccurance) {
+        int lowIndex = 0, highIndex = inputArray.length - 1, result = -1;
 
-        int first = firstOccurrence(array, x);
+        while (lowIndex <= highIndex) {
+            int mid = (lowIndex + highIndex) / 2;
+            if (inputArray[mid] < elementToSearch) {
+                lowIndex = mid + 1;
+            } else if (inputArray[mid] > elementToSearch) {
+                highIndex = mid - 1;
+            } else if (inputArray[mid] == elementToSearch) {
+                result = mid;
+                //To find first occurance move high towards left and for last occurance move low towards right.
+                if (firstOccurance)
+                    highIndex = mid - 1;
+                else
+                    lowIndex = mid + 1;
+            }
+        }
+
+        return result;
+    }
+
+    private static int count(int[] inputArray, int elementToBeSearched) {
+
+        int first = findElementBasedOnOccurance(inputArray, elementToBeSearched, true);
         if (first == -1) {
             return 0;
         } else {
-            int last = lastOccurrence(array, x);
+            int last = findElementBasedOnOccurance(inputArray, elementToBeSearched, false);
             return (last - first + 1);
         }
     }
