@@ -3,30 +3,28 @@ package Arrays;
 import java.util.Arrays;
 
 /**
- * Created by Syril on 21-05-2016.
+ * 1. Create a low pointer at the beginning of the array and a high pointer at the end of the array.
+ * 2. Create a mid pointer that starts at the beginning of the array and iterates through each element.
+ * 3. If the element at arr[mid] is a 2, then swap arr[mid] and arr[high] and decrease the high pointer by 1.
+ * 4. If the element at arr[mid] is a 0, then swap arr[mid] and arr[low] and increase the low and mid pointers by 1.
+ * 5. If the element at arr[mid] is a 1, don't swap anything and just increase the mid pointer by 1.
  */
 public class DutchNationalFlagProblem {
 
-    /*Driver function to check for above functions*/
     public static void main(String[] args) {
-        int arr[] = {0, 1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1};
-        int arr_size = arr.length;
-        sort012(arr, arr_size);
-        System.out.println("Array after seggregation ");
-        Arrays.stream(arr).forEach(System.out::print);
+        int[] inputArray = {0, 1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1};
+        sortNumbers(inputArray);
+        System.out.println("Array sorting: ");
+        Arrays.stream(inputArray).forEach(System.out::print);
     }
 
-    static void sort012(int a[], int arr_size) {
-        int low = 0;
-        int high = arr_size - 1;
-        int mid = 0;
-        int temp = 0;
+    static void sortNumbers(int[] inputArray) {
+        int low = 0, mid = 0;
+        int high = inputArray.length - 1;
         while (mid <= high) {
-            switch (a[mid]) {
+            switch (inputArray[mid]) {
                 case 0:
-                    temp = a[low];
-                    a[low] = a[mid];
-                    a[mid] = temp;
+                    swap(inputArray, low, mid);
                     low++;
                     mid++;
                     break;
@@ -34,13 +32,17 @@ public class DutchNationalFlagProblem {
                     mid++;
                     break;
                 case 2:
-                    temp = a[high];
-                    a[high] = a[mid];
-                    a[mid] = temp;
+                    swap(inputArray, high, mid);
                     high--;
                     break;
 
             }
         }
+    }
+
+    private static void swap(int[] inputArray, int indexOne, int indexTwo) {
+        int temp = inputArray[indexOne];
+        inputArray[indexOne] = inputArray[indexTwo];
+        inputArray[indexTwo] = temp;
     }
 }
