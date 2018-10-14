@@ -2,18 +2,20 @@ package Arrays;
 
 public class FindElementCountSortedArray {
     public static void main(String[] args) {
-        int[] inputArray = new int[]{1, 2, 2, 3, 3, 4, 5, 5, 5, 5, 5, 6};
-        int elementToSearch = 4;
-        findElementCount(inputArray, elementToSearch);
+        int[] arrayOne = {1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 9, 9, 10};  // x = 9, ans = 4
+        int[] arrayTwo = {1, 1, 2, 2, 2, 2, 3};  // x = 3, ans = 1
+
+        System.out.println("Given Element occurs " + findElementCount(arrayOne, 9) + " time(s)");
+        System.out.println("Given Element occurs " + findElementCount(arrayOne, 3) + " time(s)");
     }
 
-    public static void findElementCount(int[] inputArray, int elementToSearch) {
+    public static int findElementCount(int[] inputArray, int elementToSearch) {
         int firstIndex = findElementBinarySearch(inputArray, elementToSearch, true);
         if (firstIndex == -1)
-            System.out.println("Occurance count is zero");
+            return 0;
         else {
             int lastIndex = findElementBinarySearch(inputArray, elementToSearch, false);
-            System.out.println("Occurance count is " + (lastIndex - firstIndex + 1));
+            return (lastIndex - firstIndex + 1);
         }
     }
 
