@@ -28,6 +28,13 @@ public class QuickSort {
         return partitionIndex;
     }
 
+    /**
+     * 1. Find a partition index
+     * 2. Sort the left side of the partition index and then the right side of the partition index recursively.
+     * @param inputArray
+     * @param start
+     * @param end
+     */
     private static void quickSort(int[] inputArray, int start, int end) {
         if (start < end) {
             int partitionIndex = partition(inputArray, start, end);
