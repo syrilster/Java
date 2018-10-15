@@ -6,10 +6,10 @@ import java.util.Set;
 /**
  * Created by Syril on 04-04-2016.
  */
-public class pairExistsInArray {
+public class pairExistsInArrayOptimal {
 
     public static void main(String[] args) {
-        int[] inputArray = new int[]{1, 2, 4, 4};
+        int[] inputArray = new int[]{1, 2, 8, 4, 4};
         int sumDiff = 8;
 
         if (inputArray.length <= 2) {
