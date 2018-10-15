@@ -18,23 +18,23 @@ public class Anagrams {
      * 3. For second string decrement the count of character from count array.
      * 4. Repeat steps 2 and 3 till we reach end of any string.
      * 5. Check if array contains only zero then strings are anagram otherwise not.
-     * @param s1
-     * @param s2
+     * @param stringOne
+     * @param stringTwo
      * @return
      */
-    static boolean isAnagram(String s1, String s2) {
+    static boolean isAnagram(String stringOne, String stringTwo) {
 
         char allChars[] = new char[256];
 
-        s1 = s1.toLowerCase();
-        s2 = s2.toLowerCase();
+        stringOne = stringOne.toLowerCase();
+        stringTwo = stringTwo.toLowerCase();
 
-        for (int i = 0; i < s1.length(); i++) {
-            allChars[s1.charAt(i)]++;
+        for (int i = 0; i < stringOne.length(); i++) {
+            allChars[stringOne.charAt(i)]++;
         }
 
-        for (int j = 0; j < s2.length(); j++) {
-            allChars[s2.charAt(j)]--;
+        for (int j = 0; j < stringTwo.length(); j++) {
+            allChars[stringTwo.charAt(j)]--;
         }
 
         for (int k = 0; k < 256; k++) {

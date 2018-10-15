@@ -41,14 +41,11 @@ public class BalanceParen {
 		return true;
 	}
 
-	private static boolean isMatchingPair(char character1, Character character2) {
-		if (character1 == '(' && character2 == ')')
+	private static boolean isMatchingPair(char characterOne, Character characterTwo) {
+		if (characterOne == '(' && characterTwo == ')')
 			return true;
-		else if (character1 == '[' && character2 == ']')
+		else if (characterOne == '[' && characterTwo == ']')
 			return true;
-		else if (character1 == '{' && character2 == '}')
-			return true;
-		else
-			return false;
+		else return characterOne == '{' && characterTwo == '}';
 	}
 }
