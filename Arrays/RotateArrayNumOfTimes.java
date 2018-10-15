@@ -2,12 +2,12 @@ package Arrays;
 
 /**
  * Efficient Solution: Using Array Reversal
- * 1. Reverse the array elements from 0 to k-1.
- * 2. Reverse the array elements from k to array.length-1.
+ * 1. Reverse the array elements from 0 to numRotations - 1.
+ * 2. Reverse the array elements from numRotations to array.length-1.
  * 3. Reverse the whole array.
  * Example:
  * 1 2 3 4 5
- * k = 3
+ * numRotations = 3
  * Step 1. Reverse the array elements from 0 to 2: 3 2 1 4 5
  * Step 2. Reverse the array elements from 3 to 4: 3 2 1 5 4
  * Step 3. Reverse the whole array: 4 5 1 2 3
@@ -16,26 +16,27 @@ package Arrays;
  */
 public class RotateArrayNumOfTimes {
     public static void main(String[] args) {
-        int k = 2;
+        int numberOfRotations = 2;
         int[] array = {1, 2, 3, 4, 5};
-        rotateArray(array, k);
+        rotateArray(array, numberOfRotations);
         for (int i : array) {
             System.out.print(i + " ");
         }
     }
 
-    public static void rotateArray(int[] array, int n) {
-        if (n < 0) {
-            throw new IllegalArgumentException("n cannot be less tha zero");
+    public static void rotateArray(int[] array, int numberOfRotations) {
+        if (numberOfRotations < 0) {
+            throw new IllegalArgumentException("Number of rotations cannot be less than zero");
         }
 
         if (array == null || array.length < 2)
             return;
         int length = array.length;
-        if (n > length)
-            n = n % length;
-        reverse(array, 0, n - 1);
-        reverse(array, n, length - 1);
+        // This is required to limit the number of rotations. Ex: numberOfRotations = 20 and inputArray length is 4
+        if (numberOfRotations > length)
+            numberOfRotations = numberOfRotations % length;
+        reverse(array, 0, numberOfRotations - 1);
+        reverse(array, numberOfRotations, length - 1);
         reverse(array, 0, length - 1);
     }
 
@@ -48,6 +49,5 @@ public class RotateArrayNumOfTimes {
             end--;
         }
     }
-
 
 }
