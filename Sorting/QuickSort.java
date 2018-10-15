@@ -1,41 +1,44 @@
 package Sorting;
 
+import java.util.stream.IntStream;
+
 /**
- * Created by Syril on 16-06-2016.
+ * Algorithm Insights
+ * https://www.youtube.com/watch?v=COk73cpQbFQ
  */
 public class QuickSort {
     public static void main(String[] args) {
-        int a[] = new int[]{2, 6, 7, 3, 1, 5, 4, 8, 9, 10};
-        quickSort(a, 0, 9);
-        for (int i : a) {
-            System.out.print(i + " ");
-        }
+        int unsortedArray[] = new int[]{10, 6, 7, 3, 1, 5, 4, 8, 9, 2};
+        quickSort(unsortedArray, 0, unsortedArray.length - 1);
+        IntStream.of(unsortedArray).forEach(System.out::println);
     }
 
-    static int partition(int[] a, int start, int end) {
-        int pivot = a[end];
-        int pIndex = start;
-        for (int i = start; i < end; i++) {
-            if (a[i] <= pivot) {
-                swap(a, i, pIndex);
-                pIndex++;
+    static int partition(int[] inputArray, int startIndex, int endIndex) {
+        int pivot = inputArray[endIndex];
+        int partitionIndex = startIndex;
+        for (int loopIndex = startIndex; loopIndex < endIndex; loopIndex++) {
+            if (inputArray[loopIndex] <= pivot) {
+                //Swap if element is lesser than pivot. The objective here is to place element lesser than pivot on one side
+                swap(inputArray, loopIndex, partitionIndex);
+                partitionIndex++;
             }
         }
-        swap(a, pIndex, end);
-        return pIndex;
+        //Now all elements are in place and hence swap the pivot and partition index itself.
+        swap(inputArray, partitionIndex, endIndex);
+        return partitionIndex;
     }
 
-    static void quickSort(int[] a, int start, int end) {
+    private static void quickSort(int[] inputArray, int start, int end) {
         if (start < end) {
-            int pIndex = partition(a, start, end);
-            quickSort(a, start, pIndex - 1);
-            quickSort(a, pIndex + 1, end);
+            int partitionIndex = partition(inputArray, start, end);
+            quickSort(inputArray, start, partitionIndex - 1);
+            quickSort(inputArray, partitionIndex + 1, end);
         }
     }
 
-    public static void swap(int[] a, int i, int j) {
-        int temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
+    private  static void swap(int[] inputArray, int startIndex, int endIndex) {
+        int temp = inputArray[startIndex];
+        inputArray[startIndex] = inputArray[endIndex];
+        inputArray[endIndex] = temp;
     }
 }
