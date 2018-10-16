@@ -1,8 +1,13 @@
 package Arrays;
 
+/**
+ * Function to return true if the given input array can be modified once to make it sorted in ascending order.
+ * Ex: [1, 2, 3, 1] return true as modifying the last element 1 to 5 will make it sorted.
+ *     [1, 2, 4, 4, 1, 2] return false as this array requires more than one modification to make it sorted.
+ */
 public class FindIfInputCanBeSortedWithOneModification {
     public static void main(String[] args) {
-        int[] inputArray = new int[]{1, 2, 4, 1, 7};
+        int[] inputArray = new int[]{1, 2, 4, 4, -1, 4, 6};
         String outcome = canArrayBeSortedWithOneModification(inputArray) ? "can" : "can't";
         System.out.println("The Given input array " + outcome + " be sorted with one modification");
     }
