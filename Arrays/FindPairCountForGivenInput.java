@@ -25,12 +25,12 @@ public class FindPairCountForGivenInput {
 
         while (lowIndex < highIndex) {
 
-            int diff = inputArray[highIndex] + inputArray[lowIndex];
-            if (diff > sumDiff) {
+            int sumOfLowAndHigh = inputArray[highIndex] + inputArray[lowIndex];
+            if (sumOfLowAndHigh > sumDiff) {
                 highIndex--;
-            } else if (diff < sumDiff) {
+            } else if (sumOfLowAndHigh < sumDiff) {
                 lowIndex++;
-            } else if (diff == sumDiff) {
+            } else if (sumOfLowAndHigh == sumDiff) {
                 System.out.printf("(%d, %d) %n", inputArray[lowIndex], inputArray[highIndex]);
                 pairCount++;
                 lowIndex++;

@@ -29,13 +29,13 @@ public class FindMissingElementFromArrays {
 		}
 	}
 
-	private static void findMissingNumber(int[] array1, int[] array2) {
-		int result = array1[0];
-		for (int i = 1; i < array1.length; i++) {
-			result = result ^ array1[i];
+	private static void findMissingNumber(int[] arrayOne, int[] arrayTwo) {
+		int result = arrayOne[0];
+		for (int i = 1; i < arrayOne.length; i++) {
+			result = result ^ arrayOne[i];
 		}
-		for (int i = 0; i < array2.length; i++) {
-			result = result ^ array2[i];
+		for (int i = 0; i < arrayTwo.length; i++) {
+			result = result ^ arrayTwo[i];
 		}
 		System.out.println("Missing element = " + result);
 	}
