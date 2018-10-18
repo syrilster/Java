@@ -15,6 +15,11 @@ public class FindIfInputCanBeSortedWithOneModification {
     private static boolean canArrayBeSortedWithOneModification(int[] inputArray) {
         int greatestSeen = inputArray[0];
         int modCount = 1;
+        //Consider the case where the first element is the greatest. Ex: [7, 1, 2, 4, 4, 4, 4, 6]
+        if (inputArray[0] > inputArray[1]) {
+            greatestSeen = inputArray[1];
+            modCount--;
+        }
         for (int loopIndex = 1; loopIndex <= inputArray.length - 1; loopIndex++) {
             if (modCount >= 0) {
                 if (inputArray[loopIndex] >= greatestSeen) {
