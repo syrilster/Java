@@ -8,8 +8,8 @@ import java.util.*;
 public class FindPairCountForGivenInput {
 
     public static void main(String[] args) {
-        int[] inputArray = new int[]{2, 1, 3, 4, 6, 3};
-        int sum = 6;
+        int[] inputArray = new int[]{1, 5, 3, 4, 2};
+        int sum = 2;
 
         if (inputArray.length > 2) {
             getPairAndCount(inputArray, sum);
