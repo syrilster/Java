@@ -1,5 +1,3 @@
-package HackerRankTests;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,17 +8,18 @@ import java.util.Set;
 public class Pairs {
     public static void main(String[] args) {
         int[] input = new int[]{1, 5, 3, 4, 2};
-        int target = 2;
+        int target = 3;
         System.out.println("Pair count is " + pairs(target, input));
     }
 
-    static int pairs(int k, int[] arr) {
+    static int pairs(int targetPairDiff, int[] arr) {
         Set<Integer> inputSeenSoFar = new HashSet<>();
         Arrays.sort(arr);
         int pairCount = 0;
         for (int loopIndex = 0; loopIndex < arr.length; loopIndex++) {
-            int diff = Math.abs(arr[loopIndex] - k);
-            if (arr[loopIndex] > k) {
+            int currentElement = arr[loopIndex];
+            int diff = Math.abs(currentElement - targetPairDiff);
+            if (currentElement > targetPairDiff) {
                 if (inputSeenSoFar.contains(diff))
                     pairCount++;
             }
