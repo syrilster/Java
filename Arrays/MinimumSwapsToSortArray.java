@@ -18,15 +18,17 @@ package Arrays;
 public class MinimumSwapsToSortArray {
 
     // Complete the minimumSwaps function below.
-     static int minimumSwaps(int[] arr) {
+     static int minimumSwaps(int[] inputArray) {
 
         int swapCount = 0;
         int lowIndex = 0;
-        int highIndex = arr.length - 1;
+        int highIndex = inputArray.length - 1;
         while (lowIndex < highIndex) {
-            if (arr[lowIndex] > arr[highIndex]) {
+            int elementAtLowIndex = inputArray[lowIndex];
+            int elementAtHighIndex = inputArray[highIndex];
+            if (elementAtLowIndex > elementAtHighIndex) {
                 swapCount++;
-                swap(arr, lowIndex, highIndex);
+                swap(inputArray, lowIndex, highIndex);
                 highIndex--;
             } else {
                 lowIndex++;
