@@ -11,18 +11,19 @@ public class NextMinimumElement {
         getNextMinimumElement(a);
     }
 
-    public static void getNextMinimumElement(int[] a) {
-        Stack<Integer> s = new Stack<>();
-        s.push(a[0]);
-        for (int i = 1; i < a.length; i++) {
-            while (!s.isEmpty() && s.peek() > a[i]) {
+    private static void getNextMinimumElement(int[] inputArray) {
+        Stack<Integer> stack = new Stack<>();
+        stack.push(inputArray[0]);
+        for (int loopIndex = 1; loopIndex < inputArray.length; loopIndex++) {
+            int currentElement = inputArray[loopIndex];
+            while (!stack.isEmpty() && (currentElement < stack.peek())) {
                 System.out.println("Next minimum element for "
-                        + s.pop() + "\t = " + a[i]);
+                        + stack.pop() + "\t = " + currentElement);
             }
-            s.push(a[i]);
+            stack.push(currentElement);
         }
-        while (!s.isEmpty() && s.peek() != null) {
-            System.out.println("Next minimum element for " + s.pop() + "\t = " + -1);
+        while (!stack.isEmpty() && stack.peek() != null) {
+            System.out.println("Next minimum element for " + stack.pop() + "\t = " + -1);
         }
     }
 }
