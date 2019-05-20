@@ -14,28 +14,28 @@ public class ArraySpiral {
         printSpiral(array, 3, 3);
     }
 
-    public static void printSpiral(int[][] array, int row, int col) {
-        int t = 0, b = row - 1, l = 0, r = col - 1;
-        int dir = 0;
-        while (t <= b && l <= r) {
-            if (dir == 0) {
-                for (int i = l; i <= r; i++)
-                    System.out.print(array[t][i] + " ");
-                t++;
-            } else if (dir == 1) {
-                for (int i = t; i <= b; i++)
-                    System.out.print(array[i][r] + " ");
-                r--;
-            } else if (dir == 2) {
-                for (int i = r; i >= l; i--)
-                    System.out.print(array[b][i] + " ");
-                b--;
+    private static void printSpiral(int[][] array, int row, int column) {
+        int top = 0, bottom = row - 1, left = 0, right = column - 1;
+        int direction = 0;
+        while (top <= bottom && left <= right) {
+            if (direction == 0) {
+                for (int i = left; i <= right; i++)
+                    System.out.print(array[top][i] + " ");
+                top++;
+            } else if (direction == 1) {
+                for (int i = top; i <= bottom; i++)
+                    System.out.print(array[i][right] + " ");
+                right--;
+            } else if (direction == 2) {
+                for (int i = right; i >= left; i--)
+                    System.out.print(array[bottom][i] + " ");
+                bottom--;
             } else {
-                for (int i = b; i >= t; i--)
-                    System.out.print(array[i][l] + " ");
-                l++;
+                for (int i = bottom; i >= top; i--)
+                    System.out.print(array[i][left] + " ");
+                left++;
             }
-            dir = (dir + 1) % 4;
+            direction = (direction + 1) % 4;
 
         }
     }
