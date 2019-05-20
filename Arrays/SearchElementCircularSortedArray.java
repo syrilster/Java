@@ -6,7 +6,7 @@ package Arrays;
 public class SearchElementCircularSortedArray {
 
     public static void main(String[] args) {
-        int array[] = { 3, 4, 5, 6, 1, 2 };
+        int array[] = {3, 4, 5, 6, 1, 2};
         findElementInSortedRotatedArrayTest(array, 1);
     }
 
@@ -15,46 +15,45 @@ public class SearchElementCircularSortedArray {
         System.out.println("Element " + elementToSearch + (index >= 0 ? (" found at index " + index) : " not found!"));
     }
 
-    private static int findElementInSortedRotatedArray(int array[], int elementToSearch) {
+    private static int findElementInSortedRotatedArray(int[] inputArray, int elementToSearch) {
 
-        if (array == null || array.length == 0) {
+        if (inputArray == null || inputArray.length == 0) {
             return -1;
         }
 
-        int pivot = findPivot(array);
+        int pivot = findPivot(inputArray);
 
         // Find the pivot first and search only in the half where the number might exist. since this is sorted.
-        if (pivot > 0 && elementToSearch >= array[0] && elementToSearch <= array[pivot - 1]) {
-            return binarySearch(array, 0, pivot - 1, elementToSearch);
+        if (pivot > 0 && elementToSearch >= inputArray[0] && elementToSearch <= inputArray[pivot - 1]) {
+            return binarySearch(inputArray, 0, pivot - 1, elementToSearch);
         } else {
-            return binarySearch(array, pivot, array.length - 1, elementToSearch);
+            return binarySearch(inputArray, pivot, inputArray.length - 1, elementToSearch);
         }
     }
 
 
-    private static int binarySearch(int[] array, int lowIndex, int highIndex, int elementToSearch) {
+    private static int binarySearch(int[] array, int startIndex, int endIndex, int elementToSearch) {
 
         if (array == null || array.length == 0) {
             return -1;
         }
 
-        if(lowIndex > highIndex || lowIndex < 0 || highIndex >= array.length) {
-            throw new IllegalArgumentException("Invalid values for start and end! start = " + lowIndex + ", end = " + highIndex);
+        if (startIndex > endIndex || startIndex < 0 || endIndex >= array.length) {
+            throw new IllegalArgumentException("Invalid values for start and end! start = " + startIndex + ", end = " + endIndex);
         }
 
-        if(elementToSearch < array[lowIndex] || elementToSearch > array[highIndex]) {
+        if (elementToSearch < array[startIndex] || elementToSearch > array[endIndex]) {
             return -1;
         }
 
-        while (lowIndex <= highIndex) {
-
-            int mid = (lowIndex + highIndex) / 2;
+        while (startIndex <= endIndex) {
+            int mid = (startIndex + endIndex) / 2;
             if (array[mid] == elementToSearch) {
                 return mid;
             } else if (elementToSearch < array[mid]) {
-                highIndex = mid - 1;
+                endIndex = mid - 1;
             } else {
-                lowIndex = mid + 1;
+                startIndex = mid + 1;
             }
         }
 
@@ -65,23 +64,23 @@ public class SearchElementCircularSortedArray {
     /**
      * Algorithm Insights
      * case 1: inputArray[lowIndex] < inputArray[highIndex]
-     *         return lowIndex; As the array is already sorted.
+     * return lowIndex; As the array is already sorted.
      * case 2: Pivot is a element where the prev and next number is greater than itself
-     *         next = (mid + 1) % arrayLength; Modulo to avoid overflow
-     *         prev = (mid + arraylength -1) % arrayLength; adding arrayLength so that it wont be a negative number.
-     *         inputArray[midIndex] <= inputArray[next] && inputArray[midIndex] <= inputArray[prev]
-     *         return midIndex;
+     * next = (mid + 1) % arrayLength; Modulo to avoid overflow
+     * prev = (mid + arraylength -1) % arrayLength; adding arrayLength so that it wont be a negative number.
+     * inputArray[midIndex] <= inputArray[next] && inputArray[midIndex] <= inputArray[prev]
+     * return midIndex;
      * case 3: Discard the right segment
-     *         inputArray[midIndex] <= inputArray[highIndex]
-     *         highIndex = midIndex - 1;
+     * inputArray[midIndex] <= inputArray[highIndex]
+     * highIndex = midIndex - 1;
      * case 4: Discard the left segment and search in right.
-     *         inputArray[midIndex] >= inputArray[lowIndex];
-     *         lowIndex = midIndex + 1;
+     * inputArray[midIndex] >= inputArray[lowIndex];
+     * lowIndex = midIndex + 1;
      *
      * @param inputArray
      * @return
      */
-    public static int findPivot(int inputArray[]) {
+    private static int findPivot(int[] inputArray) {
         int length = inputArray.length;
         int lowIndex = 0, highIndex = length - 1;
         while (lowIndex <= highIndex) {
