@@ -7,7 +7,7 @@ package Arrays;
 public class FindMissingElementFromArrays {
 	public static void main(String[] args) {
 		int[] array1 = { 9, 7, 8, 5, 4, 6, 2, 3, 1 };
-		int[] array2 = { 2, 3, 4, 9, 1, 8, 5, 6, 7, 10 };
+		int[] array2 = { 2, 3, 4, 9, 1, 8, 5, 6, 7, 11};
 		missingNumberInDuplicateArray(array1, array2);
 	}
 
@@ -34,8 +34,8 @@ public class FindMissingElementFromArrays {
 		for (int i = 1; i < arrayOne.length; i++) {
 			result = result ^ arrayOne[i];
 		}
-		for (int i = 0; i < arrayTwo.length; i++) {
-			result = result ^ arrayTwo[i];
+		for (int i : arrayTwo) {
+			result = result ^ i;
 		}
 		System.out.println("Missing element = " + result);
 	}
