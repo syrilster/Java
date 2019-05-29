@@ -5,7 +5,7 @@ public class CustomHashMap<E> {
 
 
     private static final int SIZE = 16;
-    private Entry entrySet[] = new Entry[SIZE];
+    private Entry[] entrySet = new Entry[SIZE];
 
 
     public static class Entry<E> {

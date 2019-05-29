@@ -1,3 +1,5 @@
+package DynamicProgramming;
+
 public class LongestCommonSubSequence {
 
     private static String[][] memo;

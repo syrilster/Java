@@ -13,8 +13,8 @@ public class ArrayEquilibrium {
     static int equilibrium(int[] array) {
         int leftSum = 0;
         int sum = 0;
-        for (int i = 0; i < array.length; i++) {
-            sum += array[i];
+        for (int loopValue : array) {
+            sum += loopValue;
         }
 
         for (int j = 0; j < array.length; j++) {
