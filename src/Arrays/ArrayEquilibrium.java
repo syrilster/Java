@@ -5,8 +5,8 @@ package Arrays;
  */
 public class ArrayEquilibrium {
     public static void main(String[] args) {
-        int arr[] = {1, 1, 2};
-        System.out.println("Equilibrium index is " + equilibrium(arr));
+        int[] inputArray = {1, 1, 2};
+        System.out.println("Equilibrium index is " + equilibrium(inputArray));
 
     }
 
