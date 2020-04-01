@@ -1,7 +1,5 @@
 package Strings;
 
-import com.sun.prism.shader.Solid_TextureYV12_Loader;
-
 import java.util.Scanner;
 
 /**

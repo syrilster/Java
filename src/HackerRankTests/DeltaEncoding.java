@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-import static com.sun.org.apache.xalan.internal.lib.ExsltStrings.split;
-
 /**
  * @author SSadasivan
  * @since 7/12/2017.
