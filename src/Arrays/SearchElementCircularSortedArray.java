@@ -6,7 +6,7 @@ package Arrays;
 public class SearchElementCircularSortedArray {
 
     public static void main(String[] args) {
-        int array[] = {3, 4, 5, 6, 1, 2};
+        int[] array = {3, 4, 5, 6, 1, 2};
         findElementInSortedRotatedArrayTest(array, 1);
     }
 

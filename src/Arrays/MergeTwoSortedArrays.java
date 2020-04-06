@@ -11,13 +11,13 @@ public class MergeTwoSortedArrays {
 	public static void main(String[] args) {
 		int[] arrayA = { -3, 5, INVALID_NUM, 7, INVALID_NUM, 10, INVALID_NUM, 11, INVALID_NUM };
 		int[] arrayB = { -1, 2, 6, 12 };
-		inplaceMergeArrays(arrayA, arrayB);
-		for (int i = 0; i < arrayA.length; i++) {
-			System.out.print(arrayA[i] + ", ");
+		inPlaceMergeArrays(arrayA, arrayB);
+		for (int value : arrayA) {
+			System.out.print(value + ", ");
 		}
 	}
 
-	private static void inplaceMergeArrays(int[] arrayA, int[] arrayB) {
+	private static void inPlaceMergeArrays(int[] arrayA, int[] arrayB) {
 		int visitedIndex = arrayA.length - 1;
 		// Move all non INVALID_NUM values to end of array.
 		for (int i = arrayA.length - 1; i >= 0; i--) {

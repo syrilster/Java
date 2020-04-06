@@ -20,7 +20,7 @@ public class DeltaEncoding {
 		List<Integer> numberList = new ArrayList<>();
 		List<Integer> deltaList = new ArrayList<>();
 		while (stringTokenizer.hasMoreElements()) {
-			int number = Integer.valueOf(stringTokenizer.nextToken(" "));
+			int number = Integer.parseInt(stringTokenizer.nextToken(" "));
 			numberList.add(number);
 		}
 		deltaList.add(numberList.get(0));

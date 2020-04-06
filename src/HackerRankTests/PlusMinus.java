@@ -1,4 +1,4 @@
-package Arrays;
+package HackerRankTests;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

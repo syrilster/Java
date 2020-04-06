@@ -37,12 +37,12 @@ public class MergeSortedArrayInPlace {
 		int arrayTwo[] = { 2, 3, 8, 13 };
 		merge(arrayOne, arrayTwo);
 		System.out.println("After Merging First Array");
-		for (int i = 0; i < arrayOne.length; i++) {
-			System.out.print(arrayOne[i] + " ");
+		for (int value : arrayOne) {
+			System.out.print(value + " ");
 		}
 		System.out.println("\nSecond Array ");
-		for (int i = 0; i < arrayTwo.length; i++) {
-			System.out.print(arrayTwo[i] + " ");
+		for (int value : arrayTwo) {
+			System.out.print(value + " ");
 		}
 	}
 }

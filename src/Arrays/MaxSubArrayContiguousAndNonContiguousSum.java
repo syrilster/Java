@@ -13,9 +13,9 @@ public class MaxSubArrayContiguousAndNonContiguousSum {
 
     private static int findMaxSumContiguous(int[] array) {
         int sum = 0, finalSum = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (sum + array[i] > 0) {
-                sum += array[i];
+        for (int value : array) {
+            if (sum + value > 0) {
+                sum += value;
             } else {
                 sum = 0;
             }

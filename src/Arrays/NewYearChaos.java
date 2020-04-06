@@ -17,18 +17,18 @@ public class NewYearChaos {
     }
 
     // Complete the minimumBribes function below.
-    static void minimumBribes(int[] q) {
+    static void minimumBribes(int[] queue) {
         int bribeCount = 0;
-        for (int currentIndex = q.length - 1; currentIndex >= 0; currentIndex--) {
-            int memberOriginalIndex = q[currentIndex] - 1;
-            int currentMember = q[currentIndex];
+        for (int currentIndex = queue.length - 1; currentIndex >= 0; currentIndex--) {
+            int memberOriginalIndex = queue[currentIndex] - 1;
+            int currentMember = queue[currentIndex];
             if ((memberOriginalIndex - currentIndex) > 2) {
                 System.out.println("Too chaotic");
                 return;
             }
 
             for (int bribeCheckIndex = Math.max(0, (currentMember - 2)); bribeCheckIndex < (currentIndex); bribeCheckIndex++) {
-                if (q[bribeCheckIndex] > currentMember)
+                if (queue[bribeCheckIndex] > currentMember)
                     bribeCount++;
             }
         }

@@ -8,8 +8,8 @@ public class RearrangeElements {
 		RearrangeElements solution = new RearrangeElements();
 		int[] testArray = { -1, 3, 2, 4, 5, -6, 7, -9 };
 		solution.reArrangePositivesNegatives(testArray);
-		for (int i = 0; i < testArray.length; i++) {
-			System.out.println(testArray[i]);
+		for (int value : testArray) {
+			System.out.println(value);
 		}
 	}
 
@@ -47,15 +47,9 @@ public class RearrangeElements {
 
 	private boolean notAtRightPosition(int[] array, int index) {
 		if (index % 2 == 0) {
-			if (array[index] < 0)
-				return true;
-			else
-				return false;
+			return array[index] < 0;
 		} else {
-			if (array[index] > 0)
-				return true;
-			else
-				return false;
+			return array[index] > 0;
 		}
 	}
 }

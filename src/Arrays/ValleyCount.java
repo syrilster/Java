@@ -8,7 +8,7 @@ public class ValleyCount {
     static int countingValleys(int n, String s) {
         int valleyCount = 0;
         int temp = 0;
-        int prevTemp = 0;
+        int prevTemp;
         for (int loopIndex = 0; loopIndex < s.length(); loopIndex++) {
             prevTemp = temp;
             if (s.charAt(loopIndex) == 'U')
