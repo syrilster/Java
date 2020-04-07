@@ -16,7 +16,7 @@ public class ParenBalancer {
         String[] output = new String[100];
         int k = 0;
         for (int i = 0; i < values.length - 1; i++) {
-            Stack<Character> stack = new Stack();
+            Stack<Character> stack = new Stack<>();
             String input = values[i];
             for (int j = 0; j < input.length(); j++) {
                 if (input.charAt(j) == '(' || input.charAt(j) == '[' || input.charAt(j) == '{')

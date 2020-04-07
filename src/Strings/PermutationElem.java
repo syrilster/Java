@@ -9,7 +9,7 @@ public class PermutationElem {
         permutation(new int[]{1, 2, 3}, 0);
     }
 
-    static void permutation(int a[], int k) {
+    static void permutation(int[] a, int k) {
         if (k == a.length) {
             String number = "";
             for (int num : a) {
