@@ -1,11 +1,10 @@
-package HackerRankTests;
+package HackerRankTests.strings;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class SherlockAndValidStrings {
     public static void main(String[] args) {
-
         System.out.println(isValid("abccc"));
     }
 

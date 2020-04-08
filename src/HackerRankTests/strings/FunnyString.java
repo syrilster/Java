@@ -1,4 +1,4 @@
-package HackerRankTests;
+package HackerRankTests.strings;
 
 import java.util.Scanner;
 
